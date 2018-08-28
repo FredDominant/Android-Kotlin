@@ -2,9 +2,11 @@ package com.noblemajesty.kotlin
 
 
 class DataManager {
+
     init {
         initializeCourses()
     }
+    
     val courses = HashMap<String, CourseInfo>()
     val notes = ArrayList<NoteInfo>()
 
