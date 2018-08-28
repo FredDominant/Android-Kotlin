@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             val textValue = text_value.text.toString().toInt()
             text_value.text = (textValue * 2).toString()
 
-            Snackbar.make(view, "Vale $textValue changed", Snackbar.LENGTH_SHORT)
+            Snackbar.make(view, "Value $textValue changed", Snackbar.LENGTH_SHORT)
                     .show()
         }
     }
