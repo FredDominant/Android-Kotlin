@@ -2,4 +2,4 @@ package com.noblemajesty.kotlin
 
 class CourseInfo (val courseId: String, val title: String)
 
-class NoteInfo ()
+class NoteInfo (var course: CourseInfo, var title: String, var text: String)
