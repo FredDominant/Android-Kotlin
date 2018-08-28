@@ -3,12 +3,13 @@ package com.noblemajesty.kotlin
 
 class DataManager {
 
+    val courses = HashMap<String, CourseInfo>()
+
+    val notes = ArrayList<NoteInfo>()
+
     init {
         initializeCourses()
     }
-    
-    val courses = HashMap<String, CourseInfo>()
-    val notes = ArrayList<NoteInfo>()
 
     private fun initializeCourses() {
         var course = CourseInfo(title = "Android programming with Intents", courseId = "android intents")
