@@ -1,7 +1,7 @@
 package com.noblemajesty.kotlin
 
 
-class DataManager {
+object DataManager {
 
     val courses = HashMap<String, CourseInfo>()
 
@@ -9,6 +9,7 @@ class DataManager {
 
     init {
         initializeCourses()
+        initializeNotes()
     }
 
     private fun initializeCourses() {
@@ -23,5 +24,22 @@ class DataManager {
 
         course = CourseInfo(courseId = "Kotlin Beginners", title = "Android programming in Kotlin for beginners")
         courses.set(course.courseId, course)
+    }
+
+    fun initializeNotes() {
+        var noteInfo = NoteInfo(CourseInfo(title = "Android programming with Intents", courseId = "android intents"),
+                title = "Programming with Intents",
+                text = "A bunch of random texts")
+        notes.add(noteInfo)
+
+//        noteInfo = NoteInfo(CourseInfo(title = "Android programming with Intents", courseId = "android intents"),
+//                title = "Programming with Intents",
+//                text = "A bunch of random texts")
+//        notes.add(noteInfo)
+//
+//        noteInfo = NoteInfo(CourseInfo(title = "Android programming with Intents", courseId = "android intents"),
+//                title = "Programming with Intents",
+//                text = "A bunch of random texts")
+//        notes.add(noteInfo)
     }
 }
