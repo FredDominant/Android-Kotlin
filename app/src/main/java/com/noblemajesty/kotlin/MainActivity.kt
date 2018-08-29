@@ -69,10 +69,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if (position == (DataManager.notes.lastIndex)) {
+            val nextMenu = menu?.findItem(R.id.action_next)
+            nextMenu?.isVisible = false
+        }
+
+        if (position < 1) {
+            val previousMenu = menu?.findItem(R.id.action_previous)
+            previousMenu?.isVisible = false
+        }
+
+        return super.onPrepareOptionsMenu(menu)
+    }
+
     private fun movePrevious() {
         if (position >= 1) {
-            position--
+            position --
             displayNote()
+            invalidateOptionsMenu()
         }
     }
 
@@ -80,8 +95,9 @@ class MainActivity : AppCompatActivity() {
         Log.e("Size", "${DataManager.notes.size}")
         Log.e("Position", "$position")
         if (position < (DataManager.notes.size - 1)) {
-            position++
+            position ++
             displayNote()
+            invalidateOptionsMenu()
         }
     }
 }

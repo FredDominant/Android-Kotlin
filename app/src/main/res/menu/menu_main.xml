@@ -10,10 +10,10 @@
       android:id="@+id/action_previous"
       android:icon="@drawable/ic_navigate_before_white_24dp"
       android:title="Previous"
-      app:showAsAction="always"/>
+      app:showAsAction="ifRoom|withText"/>
     <item
       android:id="@+id/action_next"
       android:icon="@drawable/ic_navigate_next_white_24dp"
       android:title="Next"
-      app:showAsAction="always"/>
+      app:showAsAction="ifRoom|withText"/>
 </menu>
