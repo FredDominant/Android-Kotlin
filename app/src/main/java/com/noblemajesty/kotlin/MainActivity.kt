@@ -11,12 +11,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
+    var position : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        position = intent.getIntExtra(getString(R.string.position), 0)
         val adapterCourses = ArrayAdapter<CourseInfo>(this,
                 android.R.layout.simple_spinner_item,
                 DataManager.courses.values.toList())
@@ -28,8 +30,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     private fun displayNote() {
-        val position = intent.getIntExtra(getString(R.string.position), 0)
 
         Log.e("Intent position", position.toString())
 
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         spinner_select_course.setSelection(dropdownPosition)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu( menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
@@ -56,7 +58,16 @@ class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when(item.itemId) {
             R.id.action_settings -> true
+            R.id.action_next -> {
+                moveNext()
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun moveNext() {
+        position++
+        displayNote()
     }
 }

@@ -6,4 +6,9 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
+    <item
+      android:id="@+id/action_next"
+      android:icon="@drawable/ic_forward_white_24dp"
+      android:title="Next"
+      app:showAsAction="ifRoom"/>
 </menu>
