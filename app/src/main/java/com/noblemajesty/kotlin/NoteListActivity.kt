@@ -19,6 +19,13 @@ class NoteListActivity : AppCompatActivity() {
                 android.R.layout.simple_list_item_1,
                 DataManager.notes)
 
+        listview_courses.setOnItemClickListener { parent, view, position, id ->
+
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra(getString(R.string.position), position)
+            startActivity(intent)
+        }
+
         fab.setOnClickListener { view ->
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

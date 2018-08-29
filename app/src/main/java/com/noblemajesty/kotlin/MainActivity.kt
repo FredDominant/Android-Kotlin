@@ -2,6 +2,7 @@ package com.noblemajesty.kotlin
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
@@ -23,6 +24,24 @@ class MainActivity : AppCompatActivity() {
 
         spinner_select_course.adapter = adapterCourses
 
+        displayNote()
+
+    }
+
+    private fun displayNote() {
+        val position = intent.getIntExtra(getString(R.string.position), 0)
+
+        Log.e("Intent position", position.toString())
+
+        val note = DataManager.notes.get(position)
+
+        text_title.setText(note.text)
+        text_content.setText(note.title)
+
+        val dropdownPosition = DataManager.courses.values.indexOf(note.course)
+        Log.e("Dropdown position", dropdownPosition.toString())
+
+        spinner_select_course.setSelection(dropdownPosition)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
