@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         text_content.setText(note.title)
 
         val dropdownPosition = DataManager.courses.values.indexOf(note.course)
-        Log.e("Dropdown position", dropdownPosition.toString())
 
         spinner_select_course.setSelection(dropdownPosition)
     }
@@ -62,12 +61,27 @@ class MainActivity : AppCompatActivity() {
                 moveNext()
                 return true
             }
+            R.id.action_previous -> {
+                movePrevious()
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    private fun movePrevious() {
+        if (position >= 1) {
+            position--
+            displayNote()
+        }
+    }
+
     private fun moveNext() {
-        position++
-        displayNote()
+        Log.e("Size", "${DataManager.notes.size}")
+        Log.e("Position", "$position")
+        if (position < (DataManager.notes.size - 1)) {
+            position++
+            displayNote()
+        }
     }
 }
